@@ -4,16 +4,38 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
-@ConfigGroup("example")
-public interface GielinorSpeaksConfig extends Config
-{
+@ConfigGroup("gielinorspeaks")
+public interface GielinorSpeaksConfig extends Config {
+	@SuppressWarnings("unused") // Used by RuneLite config system
 	@ConfigItem(
-		keyName = "greeting",
-		name = "Welcome Greeting",
-		description = "The message to show to the user when they login"
+		keyName = "enabled",
+		name = "Enable Plugin",
+		description = "Enable or disable NPC voice playback"
 	)
-	default String greeting()
+	default boolean enabled()
 	{
-		return "Hello";
+		return true;
+	}
+
+	@SuppressWarnings("unused") // Used by RuneLite config system
+	@ConfigItem(
+		keyName = "enableDialogueBox",
+		name = "Dialogue Box Detection",
+		description = "Detect and play voices for dialogue box conversations"
+	)
+	default boolean enableDialogueBox()
+	{
+		return true;
+	}
+
+	@SuppressWarnings("unused") // Used by RuneLite config system
+	@ConfigItem(
+		keyName = "enableOverheadText",
+		name = "Overhead Text Detection",
+		description = "Detect and play voices for overhead text"
+	)
+	default boolean enableOverheadText()
+	{
+		return true;
 	}
 }
